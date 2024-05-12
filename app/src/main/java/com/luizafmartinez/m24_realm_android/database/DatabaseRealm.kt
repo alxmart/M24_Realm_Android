@@ -43,7 +43,7 @@ class DatabaseRealm {
         }
     }
 
-    fun atualizar( usuario: Usuario, id: ObjectId ) {
+    fun atualizar( usuario: Usuario) {
 
         realm.writeBlocking {
             val usuarioAtualizar = query<Usuario>("_id == $0", usuario.id)
