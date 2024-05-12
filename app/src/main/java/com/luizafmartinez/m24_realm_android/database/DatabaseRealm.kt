@@ -6,13 +6,15 @@ import io.realm.kotlin.RealmConfiguration
 import io.realm.kotlin.ext.query
 import io.realm.kotlin.query.RealmResults
 import io.realm.kotlin.query.Sort
+import org.mongodb.kbson.ObjectId
 
 class DatabaseRealm {
 
-    private val configuracao = RealmConfiguration.Builder(
-        schema = setOf( Usuario::class )
-    )
-    private val realm = Realm.open( configuracao.build() )
+     val configuracao = RealmConfiguration.Builder(
+        schema = setOf( Usuario::class )).build()
+
+    //private val realm = Realm.open( configuracao.build() )
+    private val realm = Realm.open( configuracao )
 
     fun salvar( usuario: Usuario ){
 
@@ -24,12 +26,32 @@ class DatabaseRealm {
     fun listar() : RealmResults<Usuario> {
 
         return realm
-            //.query<Usuario>("nome = $0", "jamilton")
+            //.query<Usuario>("nome == $0", "jamilton")
             .query<Usuario>()
             .sort("nome", Sort.ASCENDING)
             .find()
     }
 
+    fun remover( id: ObjectId) {
 
+        realm.writeBlocking {
+            val usuarioRemover = query<Usuario>("_id == $0", id)
+                .find()
+                .first()
 
+            delete( usuarioRemover )
+        }
+    }
+
+    fun atualizar( usuario: Usuario, id: ObjectId ) {
+
+        realm.writeBlocking {
+            val usuarioAtualizar = query<Usuario>("_id == $0", usuario.id)
+                .find()
+                .first()
+
+            usuarioAtualizar.nome = usuario.nome
+            usuarioAtualizar.idade = usuario.idade
+        }
+    }
 }
