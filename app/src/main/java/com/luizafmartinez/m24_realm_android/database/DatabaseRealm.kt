@@ -6,7 +6,7 @@ import io.realm.kotlin.RealmConfiguration
 import io.realm.kotlin.ext.query
 import io.realm.kotlin.query.RealmResults
 import io.realm.kotlin.query.Sort
-import org.mongodb.kbson.ObjectId
+import org.mongodb.kbson.BsonObjectId
 
 class DatabaseRealm {
 
@@ -32,9 +32,10 @@ class DatabaseRealm {
             .find()
     }
 
-    fun remover( id: ObjectId) {
+    fun remover( id: BsonObjectId ) {
 
         realm.writeBlocking {
+
             val usuarioRemover = query<Usuario>("_id == $0", id)
                 .find()
                 .first()

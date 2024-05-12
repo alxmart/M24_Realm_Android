@@ -2,13 +2,11 @@ package com.luizafmartinez.m24_realm_android
 
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.luizafmartinez.m24_realm_android.database.DatabaseRealm
 import com.luizafmartinez.m24_realm_android.databinding.ActivityMainBinding
 import com.luizafmartinez.m24_realm_android.model.Usuario
+import org.mongodb.kbson.BsonObjectId
 import org.mongodb.kbson.ObjectId
 
 class MainActivity : AppCompatActivity() {
@@ -54,14 +52,16 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnRemover.setOnClickListener {
             // 633a1f29ab1d031d7a04068a
-            val id = ObjectId("633a1f29ab1d031d7a04068a")
+            //val id = BsonObjectId("664137b9d8bd81446fba2829")
+            val id = ObjectId("664137b9d8bd81446fba2829")
+
             realm.remover( id )
         }
 
         binding.btnAtualizar.setOnClickListener{
 
             val nomeRecuperado = binding.editNome.text.toString()
-            val idSelecionado = ObjectId("633a1f29ab1d031d7a04068a") //Exemplo
+            val idSelecionado = ObjectId("6641383bb196f3578056e992") //Exemplo
 
             val usuario = Usuario().apply {
                 id = idSelecionado
