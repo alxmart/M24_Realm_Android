@@ -18,5 +18,27 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+
+        binding.btnSalvar.setOnClickListener {
+
+            val nome = binding.editNome.text.toString()
+
+        }
+
+
+        binding.btnAtualizar.setOnClickListener {
+
+            val nome = binding.editNome.text.toString()
+
+        }
+
+        binding.btnRemover.setOnClickListener {
+
+            val nome = binding.editNome.text.toString()
+
+
+        }
+
+
     }
 }
