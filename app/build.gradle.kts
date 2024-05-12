@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.realmKotlin).apply(false)
+    alias(libs.plugins.realmKotlin)
 }
 
 android {
