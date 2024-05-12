@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+
         binding.btnSalvar.setOnClickListener {
 
             val nomeRecuperado = binding.editNome.text.toString()
@@ -32,7 +33,19 @@ class MainActivity : AppCompatActivity() {
                 idade = 10
             }
             realm.salvar( usuario )
+        }
 
+        binding.btnListar.setOnClickListener {
+
+            val lista = realm.listar()
+
+            var textoLista = ""
+
+            lista.forEach { usuario ->
+                textoLista += "nome: ${usuario.nome} - idade: ${usuario.idade} \n"
+            }
+
+            binding.textResultado.text = textoLista
         }
 
     }

@@ -27,6 +27,8 @@ android {
             )
         }
     }
+
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -44,6 +46,7 @@ android {
 dependencies {
 
     implementation("io.realm.kotlin:library-base:1.16.0")
+    implementation("io.realm.kotlin:library-sync:1.16.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")
 
     implementation(libs.androidx.core.ktx)
