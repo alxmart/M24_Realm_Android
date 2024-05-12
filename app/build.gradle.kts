@@ -43,6 +43,9 @@ android {
 
 dependencies {
 
+    implementation("io.realm.kotlin:library-base:1.16.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
